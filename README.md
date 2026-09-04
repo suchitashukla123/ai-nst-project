@@ -2,7 +2,7 @@
 
 An AI-powered web application that transfers the artistic style of one image onto another using **PyTorch, VGG, and Adaptive Instance Normalization (AdaIN)**.
 
-Users can upload a content image, a style image, adjust style strength, and generate a stylized image.
+Users can upload a content image, upload a style image, adjust the style strength, and generate a stylized image.
 
 ## 🚀 Features
 
@@ -11,26 +11,57 @@ Users can upload a content image, a style image, adjust style strength, and gene
 - VGG-based feature extraction
 - Adaptive Instance Normalization (AdaIN)
 - Adjustable style strength using Alpha
-- CPU/GPU automatic detection
-- Flask web interface
+- Automatic CPU/GPU detection
+- Flask-based web interface
 - Example images for testing
 
 ## 🧠 How It Works
 
 ```text
-Content Image ──► VGG Encoder ──► Content Features
-                                      │
-                                      ▼
-                                    AdaIN
-                                      ▲
-                                      │
-Style Image ─────► VGG Encoder ──► Style Features
-                                      │
-                                      ▼
-                              Decoder Network
-                                      │
-                                      ▼
-                              Stylized Image
+                    ┌─────────────────┐
+                    │  Content Image  │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │   VGG Encoder   │
+                    └────────┬────────┘
+                             │
+                             ▼
+                    ┌─────────────────┐
+                    │Content Features │
+                    └────────┬────────┘
+                             │
+                             │
+                             ▼
+                       ┌──────────┐
+                       │  AdaIN   │◄──────────────┐
+                       └────┬─────┘               │
+                            │                      │
+                            ▼                      │
+                    ┌─────────────────┐            │
+                    │ Decoder Network │            │
+                    └────────┬────────┘            │
+                             │                      │
+                             ▼                      │
+                    ┌─────────────────┐            │
+                    │ Stylized Image  │            │
+                    └─────────────────┘            │
+                                                   │
+                    ┌─────────────────┐            │
+                    │   Style Image   │            │
+                    └────────┬────────┘            │
+                             │                      │
+                             ▼                      │
+                    ┌─────────────────┐            │
+                    │   VGG Encoder   │            │
+                    └────────┬────────┘            │
+                             │                      │
+                             ▼                      │
+                    ┌─────────────────┐            │
+                    │ Style Features  │────────────┘
+                    └─────────────────┘
+
 ## 🛠️ Technologies
 
 - Python
@@ -44,78 +75,86 @@ Style Image ─────► VGG Encoder ──► Style Features
 
 ## 📂 Project Structure
 
-```text
-ai-nst-project/
-│
-├── NST_Code/
-│   ├── app.py
-│   ├── train.py
-│   ├── vgg_normalised.pth
-│   ├── experiment/
-│   │   └── final_exp/
-│   │       └── decoder_final.pth
-│   ├── examples/
-│   ├── templates/
-│   └── utils/
-│
-├── Demo_IO_Images/
-├── code.ipynb
-├── requirements.txt
-├── .python-version
+ai-nst-project/  
+├── NST_Code/  
+│   ├── app.py  
+│   ├── train.py  
+│   ├── vgg_normalised.pth  
+│   ├── experiment/  
+│   │   └── final_exp/  
+│   │       └── decoder_final.pth  
+│   ├── examples/  
+│   ├── templates/  
+│   └── utils/  
+├── Demo_IO_Images/  
+├── code.ipynb  
+├── requirements.txt  
+├── .python-version  
 └── README.md
+
 ## 💻 Run Locally
 
 ### 1. Clone the Repository
 
-```bash
-git clone https://github.com/suchitashukla123/ai-nst-project.git
-cd ai-nst-project
-### 2. Create and Active Virtual Environment
-### Windows:
+    git clone https://github.com/suchitashukla123/ai-nst-project.git
+    cd ai-nst-project
 
-```bash
-python -m venv .venv
-.venv\Scripts\activate
+### 2. Create and Activate Virtual Environment
 
-### Mac/Linux:
+**Windows:**
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-### 3. Install dependencies
+    python -m venv .venv
+    .venv\Scripts\activate
 
-```bash
-pip install -r requirements.txt
-### 4. Run the application
+**macOS / Linux:**
 
-```bash
-cd NST_Code
-python app.py
+    python3 -m venv .venv
+    source .venv/bin/activate
 
-### Open:
+### 3. Install Dependencies
 
-http://127.0.0.1:5000
+    pip install -r requirements.txt
+
+### 4. Run the Application
+
+    cd NST_Code
+    python app.py
+
+### 🌐 Open in Browser
+
+    http://127.0.0.1:5000
+
 ## 🎨 How to Use
-Upload a content image.
-Upload a style image.
-Adjust Style Strength.
-Click Transfer Style.
-View the generated stylized image.
+
+1. Upload a content image.
+2. Upload a style image.
+3. Adjust the Style Strength.
+4. Click **Transfer Style**.
+5. View the generated stylized image.
+
 ## 🧠 Model
 
 The project uses:
 
-VGG Encoder for feature extraction
-AdaIN for transferring style statistics
-Trained Decoder for generating the final stylized image
+- **VGG Encoder** for feature extraction
+- **AdaIN** for style transfer
+- **Trained Decoder** for generating the stylized image
 
-## Model files:
+Required model files:
 
-NST_Code/vgg_normalised.pth
-NST_Code/experiment/final_exp/decoder_final.pth
+    NST_Code/vgg_normalised.pth
+    NST_Code/experiment/final_exp/decoder_final.pth
+
 ## 🌐 Live Demo
 
-Live App:
+**Live App:**  
 https://ai-nst-project-smw2.onrender.com
 
-The live deployment runs on a limited CPU-based hosting environment. For the complete and reliable experience, running the project locally is recommended.
+> The live deployment runs on a limited CPU-based hosting environment. For the most reliable experience, clone the repository and run the application locally.
+
+## 👩‍💻 Author
+
+**Suchita Shukla**
+
+GitHub:  
+https://github.com/suchitashukla123
