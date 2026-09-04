@@ -1,87 +1,109 @@
 # 🎨 AI Neural Style Transfer
 
-An AI-powered web application for **Neural Style Transfer**, built using **Python, PyTorch, Flask, VGG, and Adaptive Instance Normalization (AdaIN)**.
+An AI-powered web application that transfers the artistic style of one image onto another using **PyTorch, VGG, and Adaptive Instance Normalization (AdaIN)**.
 
-The application allows users to upload a **content image** and a **style image**, and generates a stylized image that preserves the content of the original image while applying the artistic style of the selected style image.
+Users can upload a content image, a style image, adjust style strength, and generate a stylized image.
 
----
+## 🚀 Features
 
-## 🌐 Live Demo
-
-🚧 **Coming Soon**
-
-The live demo link will be added after deployment.
-
----
-
-## 📌 Project Overview
-
-Neural Style Transfer is a deep learning technique that combines the **content of one image** with the **artistic style of another image**.
-
-This project implements **Arbitrary Neural Style Transfer using Adaptive Instance Normalization (AdaIN)**.
-
-### Input
-
-- 🖼️ Content Image
-- 🎨 Style Image
-- 🎚️ Alpha value for controlling style strength
-
-### Output
-
-- ✨ AI-generated stylized image
-
-The project uses a pretrained **VGG encoder** to extract feature representations, **Adaptive Instance Normalization (AdaIN)** to transfer style information, and a trained **decoder network** to reconstruct the final stylized image.
-
----
-
-## ✨ Features
-
-- 🖼️ Upload a content image
-- 🎨 Upload a style image
-- 🤖 AI-based Neural Style Transfer
-- 🧠 VGG-based feature extraction
-- 🎨 Adaptive Instance Normalization (AdaIN)
-- 🎚️ Adjustable style strength using the Alpha parameter
-- ⚡ Automatic CPU/GPU detection
-- 📂 Example images for testing
-- 🌐 Flask-based web interface
-- 💾 Generated stylized image output
-
----
+- Upload content and style images
+- AI-based Neural Style Transfer
+- VGG-based feature extraction
+- Adaptive Instance Normalization (AdaIN)
+- Adjustable style strength using Alpha
+- CPU/GPU automatic detection
+- Flask web interface
+- Example images for testing
 
 ## 🧠 How It Works
 
-The Neural Style Transfer pipeline works as follows:
-
 ```text
-              Content Image
-                    │
-                    ▼
-               VGG Encoder
-                    │
-                    ▼
-             Content Features
-                    │
-                    │
-                    ▼
-              ┌───────────┐
-              │   AdaIN   │
-              └─────┬─────┘
-                    ▲
-                    │
-               Style Features
-                    ▲
-                    │
-               VGG Encoder
-                    ▲
-                    │
-                Style Image
-                    │
-                    ▼
-            Stylized Features
-                    │
-                    ▼
-             Decoder Network
-                    │
-                    ▼
-             Stylized Image
+Content Image ──► VGG Encoder ──► Content Features
+                                      │
+                                      ▼
+                                    AdaIN
+                                      ▲
+                                      │
+Style Image ─────► VGG Encoder ──► Style Features
+                                      │
+                                      ▼
+                              Decoder Network
+                                      │
+                                      ▼
+                              Stylized Image
+🛠️ Technologies
+Python
+PyTorch
+Torchvision
+Flask
+VGG
+AdaIN
+Pillow
+NumPy
+📂 Project Structure
+ai-nst-project/
+│
+├── NST_Code/
+│   ├── app.py
+│   ├── train.py
+│   ├── vgg_normalised.pth
+│   ├── experiment/
+│   │   └── final_exp/
+│   │       └── decoder_final.pth
+│   ├── examples/
+│   ├── templates/
+│   └── utils/
+│
+├── Demo_IO_Images/
+├── code.ipynb
+├── requirements.txt
+├── .python-version
+└── README.md
+💻 Run Locally
+1. Clone the repository
+git clone https://github.com/suchitashukla123/ai-nst-project.git
+cd ai-nst-project
+2. Create virtual environment
+
+Windows:
+
+python -m venv .venv
+.venv\Scripts\activate
+
+Mac/Linux:
+
+python3 -m venv .venv
+source .venv/bin/activate
+3. Install dependencies
+pip install -r requirements.txt
+4. Run the application
+cd NST_Code
+python app.py
+
+Open:
+
+http://127.0.0.1:5000
+🎨 How to Use
+Upload a content image.
+Upload a style image.
+Adjust Style Strength.
+Click Transfer Style.
+View the generated stylized image.
+🧠 Model
+
+The project uses:
+
+VGG Encoder for feature extraction
+AdaIN for transferring style statistics
+Trained Decoder for generating the final stylized image
+
+Model files:
+
+NST_Code/vgg_normalised.pth
+NST_Code/experiment/final_exp/decoder_final.pth
+🌐 Live Demo
+
+Live App:
+https://ai-nst-project-smw2.onrender.com
+
+The live deployment runs on a limited CPU-based hosting environment. For the complete and reliable experience, running the project locally is recommended.
