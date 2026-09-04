@@ -31,16 +31,20 @@ Style Image ─────► VGG Encoder ──► Style Features
                                       │
                                       ▼
                               Stylized Image
-🛠️ Technologies
-Python
-PyTorch
-Torchvision
-Flask
-VGG
-AdaIN
-Pillow
-NumPy
-📂 Project Structure
+## 🛠️ Technologies
+
+- Python
+- PyTorch
+- Torchvision
+- Flask
+- VGG
+- AdaIN
+- Pillow
+- NumPy
+
+## 📂 Project Structure
+
+```text
 ai-nst-project/
 │
 ├── NST_Code/
@@ -59,37 +63,45 @@ ai-nst-project/
 ├── requirements.txt
 ├── .python-version
 └── README.md
-💻 Run Locally
-1. Clone the repository
+## 💻 Run Locally
+
+### 1. Clone the Repository
+
+```bash
 git clone https://github.com/suchitashukla123/ai-nst-project.git
 cd ai-nst-project
-2. Create virtual environment
+### 2. Create and Active Virtual Environment
+### Windows:
 
-Windows:
-
+```bash
 python -m venv .venv
 .venv\Scripts\activate
 
-Mac/Linux:
+### Mac/Linux:
 
+```bash
 python3 -m venv .venv
 source .venv/bin/activate
-3. Install dependencies
+### 3. Install dependencies
+
+```bash
 pip install -r requirements.txt
-4. Run the application
+### 4. Run the application
+
+```bash
 cd NST_Code
 python app.py
 
-Open:
+### Open:
 
 http://127.0.0.1:5000
-🎨 How to Use
+## 🎨 How to Use
 Upload a content image.
 Upload a style image.
 Adjust Style Strength.
 Click Transfer Style.
 View the generated stylized image.
-🧠 Model
+## 🧠 Model
 
 The project uses:
 
@@ -97,11 +109,11 @@ VGG Encoder for feature extraction
 AdaIN for transferring style statistics
 Trained Decoder for generating the final stylized image
 
-Model files:
+## Model files:
 
 NST_Code/vgg_normalised.pth
 NST_Code/experiment/final_exp/decoder_final.pth
-🌐 Live Demo
+## 🌐 Live Demo
 
 Live App:
 https://ai-nst-project-smw2.onrender.com
