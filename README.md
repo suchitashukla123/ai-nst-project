@@ -17,50 +17,9 @@ Users can upload a content image, upload a style image, adjust the style strengt
 
 ## 🧠 How It Works
 
-```text
-                    ┌─────────────────┐
-                    │  Content Image  │
-                    └────────┬────────┘
-                             │
-                             ▼
-                    ┌─────────────────┐
-                    │   VGG Encoder   │
-                    └────────┬────────┘
-                             │
-                             ▼
-                    ┌─────────────────┐
-                    │Content Features │
-                    └────────┬────────┘
-                             │
-                             │
-                             ▼
-                       ┌──────────┐
-                       │  AdaIN   │◄──────────────┐
-                       └────┬─────┘               │
-                            │                      │
-                            ▼                      │
-                    ┌─────────────────┐            │
-                    │ Decoder Network │            │
-                    └────────┬────────┘            │
-                             │                      │
-                             ▼                      │
-                    ┌─────────────────┐            │
-                    │ Stylized Image  │            │
-                    └─────────────────┘            │
-                                                   │
-                    ┌─────────────────┐            │
-                    │   Style Image   │            │
-                    └────────┬────────┘            │
-                             │                      │
-                             ▼                      │
-                    ┌─────────────────┐            │
-                    │   VGG Encoder   │            │
-                    └────────┬────────┘            │
-                             │                      │
-                             ▼                      │
-                    ┌─────────────────┐            │
-                    │ Style Features  │────────────┘
-                    └─────────────────┘
+Content Image → VGG Encoder → Content Features  
+Style Image → VGG Encoder → Style Features  
+Content + Style Features → AdaIN → Decoder → Stylized Image
 
 ## 🛠️ Technologies
 
@@ -152,9 +111,3 @@ https://ai-nst-project-smw2.onrender.com
 
 > The live deployment runs on a limited CPU-based hosting environment. For the most reliable experience, clone the repository and run the application locally.
 
-## 👩‍💻 Author
-
-**Suchita Shukla**
-
-GitHub:  
-https://github.com/suchitashukla123
